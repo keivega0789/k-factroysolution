@@ -1,0 +1,471 @@
+@charset "UTF-8";
+
+/* all */
+
+body {
+    font-family: "Montserrat", "Noto Sans JP", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Meiryo", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+
+/*========= ローディング画面のためのCSS ===============*/
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #005EA6;
+	z-index: 9999999;
+	text-align:center;
+	color:#fff;
+}
+
+#splash-logo {
+    text-align: left;
+    font-size: 72px;
+    font-weight: bold;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+/*========= 画面遷移のためのCSS ===============*/
+
+/*画面遷移アニメーション*/
+
+body{
+    background:#333;/*遷移アニメーションと同じ色を指定*/
+}
+
+body.appear{
+    background:#fff;/*画面を開いた後の背景色を指定*/
+}
+
+.splashbg{
+	position: fixed;
+	top: 0;
+	right:0;
+	bottom:0;
+	left: 0;
+	border-width: 0px;/*開始はボーダーの太さは0*/
+	border-style:solid;
+    border-color: #333;/*拡大する四角の色*/
+	animation-duration:.5s;
+	animation-fill-mode:forwards;
+}
+
+@keyframes backBoxAnime{
+	99.9% {/*アニメーション終了ぎりぎりまで*/
+        z-index: 2;/*最前面に*/
+		border-width: 0px;/*開始はボーダーの太さは0*/
+	}
+    100%{
+        z-index: -1; /*最背面に*/
+        border-width: 0px;/*終了はボーダーの太さは0*/
+    }
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+#container{
+    position: relative;
+	opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay:0.2s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+}
+}
+
+/* conveyor */
+
+/* content */
+#content {
+    background-image: url();
+}
+
+/* wrapper */
+.wrapper {
+    padding: 0 70px;
+}
+
+/* btn */
+.btn {
+    display: inline-block;
+    width: 220px;
+    border:1px solid #ffffff;
+    border-radius: 100px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.btn-blue {
+    color: #005EA6;
+    border:1px solid #005EA6;
+}
+
+.btn:hover {
+    color: #005EA6;
+    background-color: #fff;
+}
+
+/* section */
+.section-heading {
+    text-align: center;
+}
+
+.heading01 {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    color: #005EA6;
+    padding: 70px 0 30px 0;
+}
+
+.heading01-subtitle {
+    display: block;
+    font-size: 13px;
+    color: #005EA6;
+    margin-top: 10px;
+}
+
+/* header */
+#header {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background: #005EA6;
+    padding: 0 30px;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.header-logo {
+    max-height: 100px;
+}
+
+.header-logo img {
+    max-height: 100px;
+}
+/* global-nav */
+.gnav-list {
+    display: flex;
+    column-gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.gnav-item {
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+/* MV */
+.mv {
+    position: relative;
+    background-color: #005EA6;
+    height: 100vh;
+}
+
+.mv-titleArea {
+    position: absolute;
+    top: 120px;
+    left: 40px;
+    width: 50%;
+    color: #ffffff;
+    z-index: 5;
+}
+
+.mv-title {
+    font-size: 72px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.mv-subtitle {
+    font-size: 24px;
+}
+
+.mv-imgArea {
+    background-image: url(assets/img/Group\ 8.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50%;
+    height: 70%;
+    position: absolute;
+    top: 120px;
+    right: 40px;
+}
+
+/*====== 9-1-1 縦線が動いてスクロールを促す =======*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown1 {
+    /*描画位置※位置は適宜調整してください*/
+	position: absolute;
+	left: 5%;
+	bottom:10px;
+    /*全体の高さ*/
+	height:50px;
+}
+
+/*Scrollテキストの描写*/
+.scrolldown1 span{
+    /*描画位置*/
+	position: absolute;
+	left:-15px;
+	top: -15px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+}
+
+/* 線の描写 */
+.scrolldown1::after{
+	content: "";
+    /*描画位置*/
+	position: absolute;
+	top: 0;
+    /*線の形状*/
+	width: 3px;
+	height: 30px;
+	background: #eee;
+    /*線の動き1.4秒かけて動く。永遠にループ*/
+	animation: pathmove 1.4s ease-in-out infinite;
+	opacity:0;
+}
+
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes pathmove{
+	0%{
+		height:0;
+		top:0;
+		opacity: 0;
+	}
+	30%{
+		height:30px;
+		opacity: 1;
+	}
+	100%{
+		height:0;
+		top:50px;
+		opacity: 0;
+	}
+}
+
+/* about */
+.about-body {
+    text-align: center;
+}
+
+.about-desc {
+    margin-bottom: 30px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+}
+
+.about-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-title span {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: bold;
+    color: #d9a21b;
+}
+
+.about-subtitle {
+    font-size: 20px;
+}
+
+.about-img-wrapper {
+    padding: 0 100px;
+}
+
+/* products */
+
+.product-body {
+    max-width: 1110px;
+}
+
+.product-list {
+    text-align: center;
+    display: grid;
+    column-gap: 30px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 100px;
+}
+
+.product-list-item {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.16);
+}
+
+.product-list-body {
+    padding: 20px;
+}
+
+.product-list-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-list-text {
+    font-size: 13px;
+}
+
+.more {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.more .btn:hover {
+    color: #fff;
+    background-color: #005EA6;
+}
+
+.last {
+    padding-bottom: 70px;
+}
+
+/* facilities */
+
+.facilities-item {
+    padding: 0 20px;
+    text-align: center;
+}
+
+.facilities-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.facilities-text {
+    font-size: 13px;
+}
+
+/* comapny */
+.philosophy-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #d9a21b;
+    margin-bottom: 15px;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.philosophy-text {
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* footer */
+#footer {
+    background-color: #005EA6;
+    padding: 15px 0 15px 0;
+}
+
+.regular {
+    font-weight: normal;
+}
+
+#footer .gnav {
+    margin-top: 30px;
+}
+
+.footer-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.copyright {
+    color: #a79b87;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 10px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+}
+
+.page-top {
+    display: none;
+    /* scripr.js内で動きを作るまではnoneが適用されて出てこない 
+    JSを編集して要素のスタイルを変更することで出てくる（element.styleに”display: block;”が追記）
+    なぜそうなるかはJSを要勉強*/
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 1;
+}
+
+.page-top-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    border-radius: 50%;
+    background: #5890de;
+    cursor: pointer;
+}
+
+.page-top-icon {
+    font-size: 40px;
+}
+
+.page-top-link:hover {
+    opacity: 0.8;
+}
+
+/* mediaquery(Tablet) */
+/* mediaquery(SP) */
