@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- OGP設定 -->
     <meta property="og:url" content=" ページのURL" /><!-- 絶対パスで記述 -->
-    <meta property="og:type" content=" ページの種類" /><!-- website,blog,article,product等 -->
-    <meta property="og:title" content=" ページのタイトル" /><!-- 20文字程度 -->
-    <meta property="og:description" content=" ページの説明文" /><!-- 80-90文字程度 -->
-    <meta property="og:site_name" content="サイト名" /><!-- サイト名やブランド情報 -->
+    <meta property="og:type" content="website" /><!-- website,blog,article,product等 -->
+    <meta property="og:title" content="株式会社 K-ファクトリーソリューション" /><!-- 20文字程度 -->
+    <meta property="og:description" content="株式会社 K-ファクトリーソリューションは、食品加工製造における省力化装置に強みを持ち、労働負荷低減・生産性向上を実現することで、お客さまに「Best Solution」を提供します。" /><!-- 80-90文字程度 -->
+    <meta property="og:site_name" content="株式会社 K-ファクトリーソリューション" /><!-- サイト名やブランド情報 -->
     <meta property="og:image" content=" サムネイル画像のURL" /><!-- 1200px✕630px(fb対策) -->
     <!-- /OGP設定 -->
     <title>株式会社 K-ファクトリーソリューション</title><!-- ブラウザのタブに表示される名前 -->
@@ -47,18 +47,21 @@
                 </div>
                     <nav class="gnav">
                         <ul class="gnav-list">
-                            <li class="gnav-item"><a href="#products">PRODUCTS</a></li>
-                            <li class="gnav-item"><a href="#company">COMPANY</a></li>
-                            <li class="gnav-item"><a href="#contact" class="btn">CONTACT</a></li>
+                            <li class="gnav-item"><a href="products.html">PRODUCTS</a></li>
+                            <li class="gnav-item"><a href="company.html">COMPANY</a></li>
+                            <li class="gnav-item"><a href="contact.html" class="btn">CONTACT</a></li>
                         </ul>
                     </nav>
+                    <button type="button" id="js-btn-menu" class="btn-menu">
+                        <span class="btn-menu-line"></span>
+                    </button>
             </div>
         </header>
 
         <div class="mv">
             <div class="mv-inner">
                 <div class="mv-titleArea">
-                    <h2 class="mv-title">Best<br>Solution<br>For<br>Customers</h2>
+                    <h2 class="mv-title">Best<br class="pc-only"><span>Solution</span><br>For<br class="pc-only"><span>Customers</span></h2>
                     <div class="mv-subtitle">省力化でお客さまの課題を解決します</div>
                 </div>
                 <div class="mv-imgArea"></div>
@@ -126,7 +129,7 @@
                     </div>
                 </div>
                 <div class="more">
-                    <a href="" class="btn btn-blue">MORE</a>
+                    <a href="products.html" class="btn btn-blue">MORE</a>
                 </div>
             </section>
 
@@ -167,32 +170,32 @@
                 <div class="section-heading">
                     <h2 class="heading01">COMPANY<span class="heading01-subtitle">わたしたちについて</span></h2>
                 </div>
-                <div class="philosophy-title">わたしたちの思い<br>Best Solution For Customers</div>
+                <div class="philosophy-title">わたしたちの思い<br>Best Solution <br class="sp-only"> For Customers</div>
                 <p class="philosophy-text">
-                    少子高齢化による働き手の減少は大きな社会的課題となっています。<br>
+                    少子高齢化による働き手の減少は<br class="sp-only">大きな社会的課題となっています。<br>
                     株式会社 K-ファクトリーソリューションは、<br>
                     食品加工製造における省力化装置の導入事業を通し、<br>
                     労働負荷の低減および生産効率向上を実現し、<br>
-                    お客さまに最適な解決策（Best Solution）を提供することで、<br>
+                    お客さまに最適な解決策（Best Solution）<br class="sp-only">を提供することで、<br>
                     社会課題の解決に貢献してまいります。
                 </p>
                 <div class="more last">
-                    <a href="" class="btn btn-blue">MORE</a>
+                    <a href="company.html" class="btn btn-blue">MORE</a>
                 </div>
             </section>
 
         </main>
 
         <footer id="footer">
-            <nav class="gnav">
-                <ul class="gnav-list">
-                    <li class="gnav-item regular"><a href="">PRODUCTS</a></li>
-                    <li class="gnav-item regular"><a href="">COMPANY</a></li>
-                    <li class="gnav-item regular"><a href="">PRIVACY POLICY</a></li>
+            <nav class="footer-gnav">
+                <ul class="f-gnav-list">
+                    <li class="f-gnav-item regular"><a href="products.html">PRODUCTS</a></li>
+                    <li class="f-gnav-item regular"><a href="company.html">COMPANY</a></li>
+                    <li class="f-gnav-item regular"><a href="privacy-policy.html">PRIVACY POLICY</a></li>
                 </ul>
             </nav>
             <div class="footer-btn">
-                <a href="" class="btn">CONTACT</a>
+                <a href="contact.html" class="btn">CONTACT</a>
             </div>
             <div class="copyright">
                 &copy;2023 K-FACTORY SOLUTION
