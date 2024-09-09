@@ -16,19 +16,19 @@ $(function () {
         arrows: false,
         centerMode: true,
         centerPadding: '100px',
-        slidesToShow: 4,
+        slidesToShow: 3,
         responsive: [
         {   
             breakpoint: 1500,
             settings: {
                 centerPadding: '50px',
-                slidesToShow: 3
+                slidesToShow: 2
             }
         },
         {   
             breakpoint: 768,
             settings: {
-                centerPadding: '50px',
+                centerPadding: '30px',
                 slidesToShow: 1
             }
         }
@@ -50,4 +50,14 @@ $(function () {
         }, 500);
         return false;
     });
+
+    //ハンバーガーメニュー
+    $btnMenu = $("#js-btn-menu");/* 変数btnMenuの定義 */
+    $gnav = $(".gnav");/* 変数gnavの定義 */
+
+    $btnMenu.on("click", function () {/* ハンバーガーメニューのボタンが押されたとき */
+        $btnMenu.toggleClass("open");/* btnMenuにactiveクラスの有無を確認し、なければ追加、あれば外す */
+        $gnav.toggleClass("open");/* gnavにshowクラスの有無を確認し、なければ追加、あれば外す */
+    });
+
 })
