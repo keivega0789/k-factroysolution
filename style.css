@@ -211,6 +211,7 @@ body.appear #container{
 @media screen and (max-width: 768px) {
     .header-logo {
         max-height: 50px;
+        z-index: 100;
     }
     .header-logo img {
         max-height: 50px;
@@ -413,7 +414,7 @@ body.appear #container{
         width: 90%;
         height: 70%;
         position: absolute;
-        top: 20%;
+        top: 22%;
         right: 0;
         left: 0;
         margin: 0 auto;
@@ -892,6 +893,10 @@ body.appear #container{
         font-size: 12px;
     }
 }
+
+/* Contact-お問い合わせページ */
+
+
 /* Privacy-policy-個人情報保護方針ページ */
 .privacy-policy-body {
     padding: 70px 90px;
