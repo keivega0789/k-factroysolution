@@ -831,11 +831,11 @@ body.appear #container{
 
 .m-product-list {
     text-align: left;
-    padding: 70px 0;
+    padding: 70px 70px;
 }
 @media screen and (max-width: 768px) {
     .m-product-list {
-        text-align: center;
+        text-align: left;
         padding: 40px 0;
     }
 }
@@ -855,6 +855,14 @@ body.appear #container{
     margin-bottom: 0;
 }
 
+.m-product-list-body {
+    max-width: 40%;
+}
+@media screen and (max-width: 768px) {
+    .m-product-list-body {
+        max-width: 100%;
+    }
+}
 .m-product-list-title {
     margin-bottom: 20px;
     font-size: 24px;
