@@ -203,6 +203,10 @@ body.appear #container{
 
 .header-logo {
     max-height: 100px;
+    transition: all 0.3s;
+}
+.header-logo:hover {
+    opacity: 0.6;
 }
 
 .header-logo img {
@@ -255,12 +259,30 @@ body.appear #container{
 }
 
 .gnav-item {
+    position: relative;
     font-size: 14px;
     line-height: 1.8;
     letter-spacing: 0.05em;
     font-weight: bold;
     color: #ffffff;
 
+}
+
+.gnav-item.underLine::after {
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s;
+
+}
+
+.gnav-item:hover::after {
+    width: 100%;
 }
 
 .btn-menu {
@@ -398,7 +420,7 @@ body.appear #container{
 
 
 .mv-imgArea {
-    background-image: url(assets/img/Group\ 8.png);
+    background-image: url(assets/img/麺取り装置全体2.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -420,6 +442,20 @@ body.appear #container{
         margin: 0 auto;
     }
 }
+
+.mv-imgArea-title {
+    position: absolute;
+    right: 20%;
+    bottom: 10%;
+    font-size: 20px;
+    color: #ffffff;
+}
+@media screen and (max-width: 768px) {
+    .mv-imgArea-title {
+        font-size: 12px;
+        right: 5%;
+    }
+}
 /*====== 9-1-1 縦線が動いてスクロールを促す =======*/
 
 /*スクロールダウン全体の場所*/
@@ -436,11 +472,11 @@ body.appear #container{
 .scrolldown1 span{
     /*描画位置*/
 	position: absolute;
-	left:-15px;
-	top: -15px;
+	left:-20px;
+	top: -30px;
     /*テキストの形状*/
 	color: #eee;
-	font-size: 0.7rem;
+	font-size: 1rem;
 	letter-spacing: 0.05em;
 }
 
@@ -667,6 +703,32 @@ body.appear #container{
     }
 }
 
+.f-gnav-item {
+    position: relative;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+
+}
+
+.f-gnav-item.underLine::after {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s;
+
+}
+
+.f-gnav-item:hover::after {
+    width: 100%;
+}
+
 .footer-btn {
     text-align: center;
     margin-top: 20px;
@@ -793,14 +855,6 @@ body.appear #container{
     margin-bottom: 0;
 }
 
-.m-product-list-body {
-    padding-left: 50px;
-}
-@media screen and (max-width: 768px) {
-    .m-product-list-body {
-        padding: 0;
-    }
-}
 .m-product-list-title {
     margin-bottom: 20px;
     font-size: 24px;
