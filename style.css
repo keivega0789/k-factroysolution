@@ -5,6 +5,7 @@
 body {
     font-family: "Montserrat", "Noto Sans JP", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Meiryo", sans-serif;
+    letter-spacing: 0.03em;
 }
 
 a {
@@ -607,6 +608,7 @@ body.appear #container{
 
 .product-list-text {
     font-size: 13px;
+    line-height: 1.5;
 }
 
 .more {
@@ -657,7 +659,6 @@ body.appear #container{
 
 .philosophy-text {
     font-size: 15px;
-    letter-spacing: 0.03em;
     text-align: center;
     line-height: 1.5;
 }
@@ -876,6 +877,7 @@ body.appear #container{
 }
 .m-product-list-text {
     font-size: 18px;
+    line-height: 1.5;
 }
 @media screen and (max-width: 768px) {
     .m-product-list-text {
