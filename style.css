@@ -5,6 +5,7 @@
 body {
     font-family: "Montserrat", "Noto Sans JP", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Meiryo", sans-serif;
+    letter-spacing: 0.03em;
 }
 
 a {
@@ -203,6 +204,10 @@ body.appear #container{
 
 .header-logo {
     max-height: 100px;
+    transition: all 0.3s;
+}
+.header-logo:hover {
+    opacity: 0.6;
 }
 
 .header-logo img {
@@ -255,12 +260,30 @@ body.appear #container{
 }
 
 .gnav-item {
+    position: relative;
     font-size: 14px;
     line-height: 1.8;
     letter-spacing: 0.05em;
     font-weight: bold;
     color: #ffffff;
 
+}
+
+.gnav-item.underLine::after {
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s;
+
+}
+
+.gnav-item:hover::after {
+    width: 100%;
 }
 
 .btn-menu {
@@ -398,7 +421,7 @@ body.appear #container{
 
 
 .mv-imgArea {
-    background-image: url(assets/img/Group\ 8.png);
+    background-image: url(assets/img/product1.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -420,6 +443,20 @@ body.appear #container{
         margin: 0 auto;
     }
 }
+
+.mv-imgArea-title {
+    position: absolute;
+    right: 20%;
+    bottom: 10%;
+    font-size: 20px;
+    color: #ffffff;
+}
+@media screen and (max-width: 768px) {
+    .mv-imgArea-title {
+        font-size: 12px;
+        right: 5%;
+    }
+}
 /*====== 9-1-1 縦線が動いてスクロールを促す =======*/
 
 /*スクロールダウン全体の場所*/
@@ -436,11 +473,11 @@ body.appear #container{
 .scrolldown1 span{
     /*描画位置*/
 	position: absolute;
-	left:-15px;
-	top: -15px;
+	left:-20px;
+	top: -30px;
     /*テキストの形状*/
 	color: #eee;
-	font-size: 0.7rem;
+	font-size: 1rem;
 	letter-spacing: 0.05em;
 }
 
@@ -571,6 +608,7 @@ body.appear #container{
 
 .product-list-text {
     font-size: 13px;
+    line-height: 1.5;
 }
 
 .more {
@@ -621,7 +659,6 @@ body.appear #container{
 
 .philosophy-text {
     font-size: 15px;
-    letter-spacing: 0.03em;
     text-align: center;
     line-height: 1.5;
 }
@@ -665,6 +702,32 @@ body.appear #container{
     .f-gnav-list {
         font-size: 10px;
     }
+}
+
+.f-gnav-item {
+    position: relative;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+
+}
+
+.f-gnav-item.underLine::after {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s;
+
+}
+
+.f-gnav-item:hover::after {
+    width: 100%;
 }
 
 .footer-btn {
@@ -769,11 +832,11 @@ body.appear #container{
 
 .m-product-list {
     text-align: left;
-    padding: 70px 0;
+    padding: 70px 70px;
 }
 @media screen and (max-width: 768px) {
     .m-product-list {
-        text-align: center;
+        text-align: left;
         padding: 40px 0;
     }
 }
@@ -794,11 +857,11 @@ body.appear #container{
 }
 
 .m-product-list-body {
-    padding-left: 50px;
+    max-width: 40%;
 }
 @media screen and (max-width: 768px) {
     .m-product-list-body {
-        padding: 0;
+        max-width: 100%;
     }
 }
 .m-product-list-title {
@@ -814,6 +877,7 @@ body.appear #container{
 }
 .m-product-list-text {
     font-size: 18px;
+    line-height: 1.5;
 }
 @media screen and (max-width: 768px) {
     .m-product-list-text {
