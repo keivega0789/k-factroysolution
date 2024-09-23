@@ -13,7 +13,7 @@ $(window).on('load',function(){
 $(function () {
     /* pickupスライダー */
     $('.slick-area').slick({
-        arrows: false,
+        arrows: true,
         centerMode: true,
         centerPadding: '100px',
         slidesToShow: 3,
@@ -32,7 +32,9 @@ $(function () {
                 slidesToShow: 1
             }
         }
-        ]
+        ],
+        prevArrow:'<span class="btn-prev material-icons-round">chevron_left</span>',
+        nextArrow:'<span class="btn-next material-icons-round">chevron_right</span>'
     });
 
     //ページトップへ戻る

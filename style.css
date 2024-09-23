@@ -105,8 +105,6 @@ body.appear #container{
 }
 }
 
-/* conveyor */
-
 /* content */
 #content {
     background-color: #ffffff;
@@ -421,7 +419,7 @@ body.appear #container{
 
 
 .mv-imgArea {
-    background-image: url(assets/img/product1.png);
+    background-image: url(assets/img/product1_whole.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -433,7 +431,7 @@ body.appear #container{
 }
 @media screen and (max-width: 768px) {
     .mv-imgArea {
-        background-size: cover;
+        background-size: contain;
         width: 90%;
         height: 70%;
         position: absolute;
@@ -446,7 +444,7 @@ body.appear #container{
 
 .mv-imgArea-title {
     position: absolute;
-    right: 20%;
+    right: 10%;
     bottom: 10%;
     font-size: 20px;
     color: #ffffff;
@@ -455,6 +453,7 @@ body.appear #container{
     .mv-imgArea-title {
         font-size: 12px;
         right: 5%;
+        bottom: 15%;
     }
 }
 /*====== 9-1-1 縦線が動いてスクロールを促す =======*/
@@ -586,6 +585,9 @@ body.appear #container{
 }
 
 .product-list-item {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
     padding: 10px;
     border-radius: 8px;
     background-color: #fff;
@@ -642,6 +644,36 @@ body.appear #container{
     font-size: 13px;
 }
 
+/* slickの追加設定 */
+.btn-prev,
+.btn-next{
+    position:absolute;
+    z-index:100;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:48px;
+    color:#005EA6;
+    cursor:pointer;
+}
+
+.btn-prev{
+    left:0;
+}
+.btn-next{
+    right:0;
+}
+@media screen and (max-width: 768px) {
+    .btn-prev,
+    .btn-next {
+        font-size: 30px;
+    }
+    .btn-prev {
+        left: 20px;
+    }
+    .btn-next {
+        right: 20px;
+    }
+}
 /* comapny */
 .philosophy-title {
     font-size: 40px;
@@ -858,10 +890,12 @@ body.appear #container{
 
 .m-product-list-body {
     max-width: 40%;
+    margin-left: 20px;
 }
 @media screen and (max-width: 768px) {
     .m-product-list-body {
         max-width: 100%;
+        margin-left: 0;
     }
 }
 .m-product-list-title {
@@ -1021,5 +1055,3 @@ body.appear #container{
         font-size: 14px;
     }
 }
-/* mediaquery(Tablet) */
-/* mediaquery(SP) */
