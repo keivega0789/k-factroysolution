@@ -2,8 +2,8 @@
 <html lang="ja">
 <!-- OGPの使用を宣言 -->
 <head prefix="og: https://ogp.me/ns#">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"><!-- charactersetの設定。基本はUTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- SP等への表示サイズ最適化 -->
     <!-- OGP設定 -->
     <meta property="og:url" content=" ページのURL" /><!-- 絶対パスで記述 -->
     <meta property="og:type" content="website" /><!-- website,blog,article,product等 -->
@@ -29,7 +29,7 @@
     <!-- ファビコン設置：ファビコン生成サイト https://ao-system.net/favicongenerator/ で作成し、フォルダ直下に格納する。下記名前と整合性合うように。 -->
     <link rel="icon" type="image/png" href="icon-192x192.png">
     <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-180x180.png">
-    <link rel="icおn" href="favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
 </head>
 <body>
@@ -94,8 +94,8 @@
                     <h2 class="heading01">PRODUCTS<span class="heading01-subtitle">製作実績</span></h2>
                 </div>
                 <div class="products-body">
-                    <div class="product-list">
-                        <div class="product-list-item">
+                    <ul class="product-list">
+                        <li class="product-list-item">
                             <figure class="product-list-img">
                                 <img src="assets/img/product1_whole.png" alt="">
                             </figure>
@@ -105,8 +105,8 @@
                                     <p>麺取り工程の作業を省人化する装置です</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-list-item">
+                        </li>
+                        <li class="product-list-item">
                             <figure class="product-list-img">
                                 <img src="assets/img/product2.png" alt="">
                             </figure>
@@ -116,8 +116,8 @@
                                     <p>麺の品質維持に欠かせない麺ほぐし液の噴霧装置です</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-list-item">
+                        </li>
+                        <li class="product-list-item">
                             <figure class="product-list-img">
                                 <img src="assets/img/product1_whole.png" alt="">
                             </figure>
@@ -127,8 +127,8 @@
                                     <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
                 <div class="more">
                     <a href="products.html" class="btn btn-blue">MORE</a>
