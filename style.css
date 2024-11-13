@@ -115,9 +115,7 @@ body.appear #container{
     padding: 0 70px;
 }
 @media screen and (max-width: 768px) {
-    .wrapper {
-        padding: 0 15px;
-    }
+    
 }
 /* btn */
 .btn {
@@ -175,7 +173,8 @@ body.appear #container{
 
 /* header */
 #header {
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 20;
     width: 100%;
     background: #005EA6;
@@ -362,28 +361,24 @@ body.appear #container{
 .mv {
     position: relative;
     background-color: #005EA6;
-    height: 100vh;
+    height: calc(100vh - 100px);
+    padding: 0 30px;
+}
+
+.mv-inner {
+    display: flex;
+    justify-content: space-between;
 }
 
 .mv-titleArea {
-    position: absolute;
-    top: 15%;
-    left: 3%;
-    width: 50%;
+    position: relative;
     color: #ffffff;
-    z-index: 10;
 }
 
 @media screen and (max-width: 768px) {
     .mv-titleArea {
-        position: absolute;
-        top: 75px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        color: #ffffff;
-        z-index: 10;
-        width: 100%;
+        padding: 0;
+        text-align: center;
     }
 }
 
@@ -419,42 +414,24 @@ body.appear #container{
 
 
 .mv-imgArea {
-    background-image: url(assets/img/product1_whole.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 70%;
-    height: 80%;
-    position: absolute;
-    top: 140px;
-    right: 50px;
-}
-@media screen and (max-width: 768px) {
-    .mv-imgArea {
-        background-size: contain;
-        width: 90%;
-        height: 70%;
-        position: absolute;
-        top: 22%;
-        right: 0;
-        left: 0;
-        margin: 0 auto;
-    }
+    position: relative;
+    max-width: 68%;
 }
 
 .mv-imgArea-title {
     position: absolute;
-    right: 10%;
-    bottom: 10%;
+    right: 50px;
+    bottom: 50px;
     font-size: 20px;
-    line-height: 1.5;
+    font-weight: bold;
+    line-height: 1;
     color: #ffffff;
 }
 @media screen and (max-width: 768px) {
     .mv-imgArea-title {
         font-size: 12px;
         right: 5%;
-        bottom: 15%;
+        bottom: 20%;
     }
 }
 /*====== 9-1-1 縦線が動いてスクロールを促す =======*/
@@ -463,8 +440,8 @@ body.appear #container{
 .scrolldown1 {
     /*描画位置※位置は適宜調整してください*/
 	position: absolute;
-	left: 5%;
-	bottom:10px;
+	left: 60px;
+	bottom: 150px;
     /*全体の高さ*/
 	height:50px;
 }
@@ -489,10 +466,10 @@ body.appear #container{
 	top: 0;
     /*線の形状*/
 	width: 3px;
-	height: 30px;
+	height: 100px;
 	background: #eee;
     /*線の動き1.4秒かけて動く。永遠にループ*/
-	animation: pathmove 1.4s ease-in-out infinite;
+	animation: pathmove 2s ease-in-out infinite;
 	opacity:0;
 }
 
@@ -510,12 +487,12 @@ body.appear #container{
 		opacity: 0;
 	}
 	30%{
-		height:30px;
+		height:100px;
 		opacity: 1;
 	}
 	100%{
 		height:0;
-		top:50px;
+		top:150px;
 		opacity: 0;
 	}
 }
@@ -632,7 +609,7 @@ body.appear #container{
 /* facilities */
 
 .facilities-item {
-    padding: 0 20px;
+    padding: 0 30px;
     text-align: center;
 }
 
@@ -1060,5 +1037,25 @@ body.appear #container{
     }
     .privacy-policy-item-text {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        padding: 0 15px;
+    }
+
+    .mv-inner {
+        flex-direction: column;
+    }
+
+    .mv-imgArea {
+        max-width: 100%;
+        padding-top: 30px;
+        padding-right: 0;
+    }
+
+    .scrolldown1 {
+        bottom: 15%;
     }
 }
