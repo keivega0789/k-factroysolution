@@ -364,6 +364,11 @@ body.appear #container{
     height: calc(100vh - 100px);
     padding: 0 30px;
 }
+@media screen and (max-width: 768px) {
+    .mv {
+        height: 100vh;
+    }
+}
 
 .mv-inner {
     display: flex;
