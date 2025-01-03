@@ -16,8 +16,26 @@ img {
     max-width: 100%;
 }
 
-/* トップページ */
+/* ページ遷移 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#005EA6;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity .8s ease;
+}
 
+body.fadeout::after {
+    opacity: 1;
+}
+
+/* トップページ */
 /*========= ローディング画面のためのCSS ===============*/
 #splash {
 	position: fixed;
@@ -37,12 +55,6 @@ img {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
-@media screen and (max-width: 768px) {
-    #splash-logo {
-        text-align: left;
-        font-size: 50px;
-    }
 }
 
 /*========= 画面遷移のためのCSS ===============*/
@@ -114,9 +126,7 @@ body.appear #container{
 .wrapper {
     padding: 0 70px;
 }
-@media screen and (max-width: 768px) {
-    
-}
+
 /* btn */
 .btn {
     display: inline-block;
@@ -161,15 +171,6 @@ body.appear #container{
     color: #005EA6;
     margin-top: 10px;
 }
-@media screen and (max-width: 768px) {
-    .heading01 {
-        font-size: 23px;
-        padding: 40px 0 20px 0;
-    }
-    .heading01-subtitle {
-        font-size: 10px;
-    }
-}
 
 /* header */
 #header {
@@ -181,22 +182,11 @@ body.appear #container{
     padding: 0 30px;
 }
 
-@media screen and (max-width: 768px) {
-    #header {
-        padding: 0 15px;
-    }
-}
-
 .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100px;
-}
-@media screen and (max-width: 768px) {
-    .header-inner {
-        height: 60px;
-    }
 }
 
 .header-logo {
@@ -210,45 +200,8 @@ body.appear #container{
 .header-logo img {
     max-height: 100px;
 }
-@media screen and (max-width: 768px) {
-    .header-logo {
-        max-height: 50px;
-        z-index: 100;
-    }
-    .header-logo img {
-        max-height: 50px;
-    }
-}
 
 /* global-nav */
-@media screen and (max-width: 768px) {
-    .gnav {
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 20;
-        opacity: 0;
-        text-align: center;
-        color: #ffffff;
-        background-color: #005EA6;
-        transition: opacity 0.6s ease, visibility 0.6s ease;
-        visibility: hidden;
-    }
-
-    .gnav.open {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .gnav-list {
-        flex-direction: column;
-        row-gap: 50px;
-        margin-top: 50%;
-    }
-}
-
 .gnav-list {
     display: flex;
     column-gap: 25px;
@@ -287,7 +240,582 @@ body.appear #container{
     display: none;
 }
 
+/* MV */
+.mv {
+    position: relative;
+    background-color: #005EA6;
+    height: calc(100vh - 100px);
+    padding: 0 30px;
+}
+
+.mv-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mv-titleArea {
+    position: relative;
+    color: #ffffff;
+}
+
+.mv-title {
+    font-size: 72px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.mv-subtitle {
+    font-size: 24px;
+}
+
+.mv-imgArea {
+    position: relative;
+    max-width: 68%;
+}
+
+.mv-imgArea-title {
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+}
+
+/*====== 9-1-1 縦線が動いてスクロールを促す =======*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown1 {
+    /*描画位置※位置は適宜調整してください*/
+	position: absolute;
+	left: 60px;
+	bottom: 150px;
+    /*全体の高さ*/
+	height:50px;
+}
+
+/*Scrollテキストの描写*/
+.scrolldown1 span{
+    /*描画位置*/
+	position: absolute;
+	left:-20px;
+	top: -30px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 1rem;
+	letter-spacing: 0.05em;
+}
+
+/* 線の描写 */
+.scrolldown1::after{
+	content: "";
+    /*描画位置*/
+	position: absolute;
+	top: 0;
+    /*線の形状*/
+	width: 3px;
+	height: 100px;
+	background: #eee;
+    /*線の動き1.4秒かけて動く。永遠にループ*/
+	animation: pathmove 2s ease-in-out infinite;
+	opacity:0;
+}
+
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes pathmove{
+	0%{
+		height:0;
+		top:0;
+		opacity: 0;
+	}
+	30%{
+		height:100px;
+		opacity: 1;
+	}
+	100%{
+		height:0;
+		top:150px;
+		opacity: 0;
+	}
+}
+
+/* about */
+.about-body {
+    text-align: center;
+}
+
+.about-desc {
+    margin-bottom: 30px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+}
+
+.about-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.about-title span {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: bold;
+    color: #d9a21b;
+}
+
+.about-subtitle {
+    font-size: 20px;
+}
+
+.about-img-wrapper {
+    padding: 0 100px;
+}
+
+/* products */
+.product-body {
+    max-width: 1110px;
+}
+
+.product-list {
+    text-align: center;
+    display: grid;
+    column-gap: 30px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 100px;
+}
+
+.product-list-item {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.16);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2s ease 0.5s, transform 2s ease 0.5s, box-shadow 0.5s ease;
+}
+
+.product-list-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-list-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
+}
+
+.product-list-body {
+    padding: 20px;
+}
+
+.product-list-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-list-text {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.more {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.more .btn:hover {
+    color: #fff;
+    background-color: #005EA6;
+}
+
+.last {
+    padding-bottom: 70px;
+}
+
+/* facilities */
+
+.facilities-item {
+    padding: 0 30px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2s ease 0.5s, transform 2s ease 0.5s;
+}
+
+.facilities-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.facilities-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.facilities-text {
+    font-size: 13px;
+}
+
+/* slickの追加設定 */
+.btn-prev,
+.btn-next{
+    position:absolute;
+    z-index:100;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:48px;
+    color:#005EA6;
+    cursor:pointer;
+}
+
+.btn-prev{
+    left:0;
+}
+.btn-next{
+    right:0;
+}
+
+/* company */
+.philosophy-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #d9a21b;
+    margin-bottom: 15px;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.sp-only {
+    display: none;
+}
+
+.philosophy-text {
+    font-size: 15px;
+    text-align: center;
+    line-height: 2;
+}
+
+/* footer */
+#footer {
+    background-color: #005EA6;
+    padding: 15px 0 15px 0;
+}
+
+.footer-gnav {
+    margin-top: 20px;
+}
+
+.f-gnav-list {
+    display: flex;
+    justify-content: center;
+    column-gap: 25px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.f-gnav-item {
+    position: relative;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+
+}
+
+.f-gnav-item.underLine::after {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: width 0.3s;
+
+}
+
+.f-gnav-item:hover::after {
+    width: 100%;
+}
+
+.footer-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.copyright {
+    color: #a79b87;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 10px;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+}
+
+.page-top {
+    display: none;
+    /* scripr.js内で動きを作るまではnoneが適用されて出てこない 
+    JSを編集して要素のスタイルを変更することで出てくる（element.styleに”display: block;”が追記）
+    なぜそうなるかはJSを要勉強*/
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 1;
+}
+
+.page-top-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    border-radius: 50%;
+    background: #5890de;
+    cursor: pointer;
+}
+
+.page-top-icon {
+    font-size: 40px;
+}
+
+.page-top-link:hover {
+    opacity: 0.8;
+}
+
+/* Products-制作実績ページ */
+.hero {
+    height: 240px;
+    background-color: #005EA6;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.hero-inner {
+    padding: 50px 40px 10px 40px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+
+.hero-subtitle {
+    font-size: 13px;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+}
+
+.m-product-list {
+    text-align: left;
+    padding: 70px 70px;
+}
+
+.m-product-list-item {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 60px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.16);
+}
+
+.m-product-list-item:nth-child(3) {
+    margin-bottom: 0;
+}
+
+.m-product-list-body {
+    max-width: 40%;
+    padding: 40px 20px 0 20px;
+}
+
+.m-product-list-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.m-product-list-text {
+    font-size: 18px;
+    line-height: 2;
+}
+
+/* Company-会社概要ページ */
+.main-page {
+    padding-top: 70px;
+}
+
+.company-info-inner {
+    padding: 70px 0;
+}
+
+.company-info-heading {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding-bottom: 20px;
+}
+
+.table01 {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.table01 tr {
+    border-bottom: solid 1px #ddd;
+}
+
+.table01 th,
+.table01 td {
+    padding: 30px 50px;
+    text-align: left;
+}
+
+.company-info-access {
+    padding-top: 70px;
+}
+
+.access-map-link {
+    padding-top: 15px;
+}
+
+/* Privacy-policy-個人情報保護方針ページ */
+.privacy-policy-body {
+    padding: 70px 90px;
+}
+
+.privacy-policy-explain {
+    font-size: 15px;
+    padding-bottom: 50px;
+    line-height: 1.5;
+}
+
+.privacy-policy-item {
+    padding-bottom: 30px;
+}
+
+.privacy-policy-item-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #005EA6;
+    padding-bottom: 15px;
+}
+
+.privacy-policy-item-text {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.privacy-policy-item-text span {
+    padding-left: 30px;
+}
+
+.privacy-policy-item-text .contact-link {
+    text-decoration: underline;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.privacy-policy-item-text .contact-link:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 @media screen and (max-width: 768px) {
+    #splash-logo {
+        text-align: left;
+        font-size: 50px;
+    }
+    
+    .wrapper {
+        padding: 0 15px;
+    }
+
+    .mv-inner {
+        flex-direction: column;
+    }
+
+    .mv-imgArea {
+        max-width: 100%;
+        padding-top: 30px;
+        padding-right: 0;
+    }
+
+    .scrolldown1 {
+        position: absolute;
+        left: 50%;
+        bottom: 15%;
+    }
+
+    .heading01 {
+        font-size: 23px;
+        padding: 40px 0 20px 0;
+    }
+
+    .heading01-subtitle {
+        font-size: 10px;
+    }
+
+    #header {
+        padding: 0 15px;
+    }
+
+    .header-inner {
+        height: 60px;
+    }
+
+    .header-logo {
+        max-height: 50px;
+        z-index: 100;
+    }
+
+    .header-logo img {
+        max-height: 50px;
+    }
+
+    .gnav {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        opacity: 0;
+        text-align: center;
+        color: #ffffff;
+        background-color: #005EA6;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+        visibility: hidden;
+    }
+
+    .gnav.open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .gnav-list {
+        flex-direction: column;
+        row-gap: 50px;
+        margin-top: 50%;
+    }
+
     .btn-menu {
         display: flex;
         position: fixed;
@@ -355,58 +883,25 @@ body.appear #container{
         transform: rotate(-45deg);
     }
 
-}
-
-/* MV */
-.mv {
-    position: relative;
-    background-color: #005EA6;
-    height: calc(100vh - 100px);
-    padding: 0 30px;
-}
-@media screen and (max-width: 768px) {
     .mv {
-        height: 100vh;
+        height: 100svh;
     }
-}
 
-.mv-inner {
-    display: flex;
-    justify-content: space-between;
-}
-
-.mv-titleArea {
-    position: relative;
-    color: #ffffff;
-}
-
-@media screen and (max-width: 768px) {
     .mv-titleArea {
         padding: 0;
         text-align: center;
     }
-}
 
-.mv-title {
-    font-size: 72px;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    margin-bottom: 20px;
-}
-
-.mv-subtitle {
-    font-size: 24px;
-}
-@media screen and (max-width: 768px) {
     .mv-title {
         font-size: 30px;
         text-align: center;
         margin-bottom: 10px;
     }
+
     .mv-title .pc-only {
         display: none;
     }
+
     .mv-title span {
         padding-left: 1rem;
     }
@@ -415,423 +910,84 @@ body.appear #container{
         font-size: 10px;
         text-align: center;
     }
-}
 
-
-.mv-imgArea {
-    position: relative;
-    max-width: 68%;
-}
-
-.mv-imgArea-title {
-    position: absolute;
-    right: 50px;
-    bottom: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 1;
-    color: #ffffff;
-}
-@media screen and (max-width: 768px) {
     .mv-imgArea-title {
         font-size: 12px;
-        right: 5%;
-        bottom: 20%;
     }
-}
-/*====== 9-1-1 縦線が動いてスクロールを促す =======*/
 
-/*スクロールダウン全体の場所*/
-.scrolldown1 {
-    /*描画位置※位置は適宜調整してください*/
-	position: absolute;
-	left: 60px;
-	bottom: 150px;
-    /*全体の高さ*/
-	height:50px;
-}
-
-/*Scrollテキストの描写*/
-.scrolldown1 span{
-    /*描画位置*/
-	position: absolute;
-	left:-20px;
-	top: -30px;
-    /*テキストの形状*/
-	color: #eee;
-	font-size: 1rem;
-	letter-spacing: 0.05em;
-}
-
-/* 線の描写 */
-.scrolldown1::after{
-	content: "";
-    /*描画位置*/
-	position: absolute;
-	top: 0;
-    /*線の形状*/
-	width: 3px;
-	height: 100px;
-	background: #eee;
-    /*線の動き1.4秒かけて動く。永遠にループ*/
-	animation: pathmove 2s ease-in-out infinite;
-	opacity:0;
-}
-
-@media screen and (max-width: 768px) {
-    .scrolldown1 {
-        position: absolute;
-        left: 50%;
-    }
-}
-/*高さ・位置・透過が変化して線が上から下に動く*/
-@keyframes pathmove{
-	0%{
-		height:0;
-		top:0;
-		opacity: 0;
-	}
-	30%{
-		height:100px;
-		opacity: 1;
-	}
-	100%{
-		height:0;
-		top:150px;
-		opacity: 0;
-	}
-}
-
-/* about */
-.about-body {
-    text-align: center;
-}
-
-.about-desc {
-    margin-bottom: 30px;
-    line-height: 1;
-    letter-spacing: 0.03em;
-}
-
-.about-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.about-title span {
-    font-size: 40px;
-    line-height: 1;
-    font-weight: bold;
-    color: #d9a21b;
-}
-
-.about-subtitle {
-    font-size: 20px;
-}
-
-.about-img-wrapper {
-    padding: 0 100px;
-}
-@media screen and (max-width: 768px) {
     .about-title {
         font-size: 14px;
         margin-bottom: 10px;
     }
+
     .about-title span {
         font-size: 20px;
     }
+
     .about-subtitle {
         font-size: 10px;
     }
+
     .about-img-wrapper {
         padding: 0;
     }
-}
-/* products */
 
-.product-body {
-    max-width: 1110px;
-}
-
-.product-list {
-    text-align: center;
-    display: grid;
-    column-gap: 30px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding: 0 100px;
-}
-
-@media screen and (max-width: 768px) {
     .product-list {
         display: block;
         padding: 0;
     }
-}
 
-.product-list-item {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.16);
-}
-@media screen and (max-width: 768px) {
     .product-list-item {
         margin: 0 0 25px 0;
     }
-}
-.product-list-body {
-    padding: 20px;
-}
 
-.product-list-title {
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.product-list-text {
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.more {
-    text-align: center;
-    padding-top: 30px;
-}
-
-.more .btn:hover {
-    color: #fff;
-    background-color: #005EA6;
-}
-
-.last {
-    padding-bottom: 70px;
-}
-
-/* facilities */
-
-.facilities-item {
-    padding: 0 30px;
-    text-align: center;
-}
-
-.facilities-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 20px 0 10px 0;
-}
-
-.facilities-text {
-    font-size: 13px;
-}
-
-/* slickの追加設定 */
-.btn-prev,
-.btn-next{
-    position:absolute;
-    z-index:100;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:48px;
-    color:#005EA6;
-    cursor:pointer;
-}
-
-.btn-prev{
-    left:0;
-}
-.btn-next{
-    right:0;
-}
-@media screen and (max-width: 768px) {
     .btn-prev,
     .btn-next {
         font-size: 30px;
     }
+
     .btn-prev {
         left: 20px;
     }
+
     .btn-next {
         right: 20px;
     }
-}
-/* company */
-.philosophy-title {
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-    color: #d9a21b;
-    margin-bottom: 15px;
-    letter-spacing: 0.03em;
-    line-height: 1.5;
-}
 
-.sp-only {
-    display: none;
-}
-
-.philosophy-text {
-    font-size: 15px;
-    text-align: center;
-    line-height: 2;
-}
-@media screen and (max-width: 768px) {
     .philosophy-title {
         font-size: 25px;
     }
+
     .sp-only {
         display: block;
     }
+
     .philosophy-text {
         font-size: 13px;
     }
+
     #company .more.last {
         padding: 15px 0 30px 0;
     }
-}
-/* footer */
-#footer {
-    background-color: #005EA6;
-    padding: 15px 0 15px 0;
-}
 
-.footer-gnav {
-    margin-top: 20px;
-}
-@media screen and (max-width: 768px) {
     .footer-gnav {
         margin-top: 15px;
     }
-}
 
-.f-gnav-list {
-    display: flex;
-    justify-content: center;
-    column-gap: 25px;
-    color: #ffffff;
-    font-weight: normal;
-}
-
-.f-gnav-item {
-    position: relative;
-    font-size: 14px;
-    line-height: 1.8;
-    letter-spacing: 0.05em;
-    color: #ffffff;
-
-}
-@media screen and (max-width: 768px) {
     .f-gnav-item {
         font-size: 10px;
     }
-}
 
-.f-gnav-item.underLine::after {
-    position: absolute;
-    content: "";
-    bottom: -2px;
-    left: 0;
-    display: block;
-    width: 0;
-    height: 1px;
-    background-color: #fff;
-    transition: width 0.3s;
-
-}
-
-.f-gnav-item:hover::after {
-    width: 100%;
-}
-
-.footer-btn {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.copyright {
-    color: #a79b87;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 10px;
-    line-height: 1.8;
-    letter-spacing: 0.05em;
-}
-
-.page-top {
-    display: none;
-    /* scripr.js内で動きを作るまではnoneが適用されて出てこない 
-    JSを編集して要素のスタイルを変更することで出てくる（element.styleに”display: block;”が追記）
-    なぜそうなるかはJSを要勉強*/
-    position: fixed;
-    right: 40px;
-    bottom: 40px;
-    z-index: 1;
-}
-
-.page-top-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    transition: opacity 0.3s;
-    border-radius: 50%;
-    background: #5890de;
-    cursor: pointer;
-}
-
-.page-top-icon {
-    font-size: 40px;
-}
-
-.page-top-link:hover {
-    opacity: 0.8;
-}
-@media screen and (max-width: 768px) {
     .page-top {
         right: 10px;
         bottom: 20px;
     }
+
     .page-top-link {
         width: 40px;
         height: 40px;
     }
-}
 
-/* Products-制作実績ページ */
-.hero {
-    height: 240px;
-    background-color: #005EA6;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-.hero-inner {
-    padding: 50px 40px 10px 40px;
-    text-align: center;
-}
-
-.hero-title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ffffff;
-    letter-spacing: 0.03em;
-    line-height: 1.5;
-}
-
-.hero-subtitle {
-    font-size: 13px;
-    color: #ffffff;
-    letter-spacing: 0.03em;
-}
-@media screen and (max-width: 768px) {
     .hero {
         height: 150px;
     }
@@ -844,196 +1000,70 @@ body.appear #container{
     .hero-subtitle {
         font-size: 10px;
     }
-}
 
-.m-product-list {
-    text-align: left;
-    padding: 70px 70px;
-}
-@media screen and (max-width: 768px) {
     .m-product-list {
         text-align: left;
         padding: 40px 0;
     }
-}
-.m-product-list-item {
-    justify-content: center;
-    display: flex;
-    margin-bottom: 60px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.16);
-}
-@media screen and (max-width: 768px) {
+
     .m-product-list-item {
         display: block;
         margin-bottom: 30px;
     }
-}
-.m-product-list-item:nth-child(3) {
-    margin-bottom: 0;
-}
 
-.m-product-list-body {
-    max-width: 40%;
-    padding: 40px 20px 0 20px;
-}
-@media screen and (max-width: 768px) {
     .m-product-list-body {
         max-width: 100%;
         padding: 20px;
     }
-}
-.m-product-list-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-@media screen and (max-width: 768px) {
+
     .m-product-list-title {
         margin: 20px 0 10px;
         font-size: 20px;
     }
-}
-.m-product-list-text {
-    font-size: 18px;
-    line-height: 2;
-}
-@media screen and (max-width: 768px) {
+
     .m-product-list-text {
         font-size: 14px;
         line-height: 1.5;
     }
-}
-/* Company-会社概要ページ */
-.main-page {
-    padding-top: 70px;
-}
-@media screen and (max-width: 768px) {
+
     .main-page {
         padding-top: 40px;
     }
-}
-.company-info-inner {
-    padding: 70px 0;
-}
-@media screen and (max-width: 768px) {
+
     .company-info-inner {
         padding: 30px 0 40px;
     }
-}
-.company-info-heading {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    padding-bottom: 20px;
-}
-@media screen and (max-width: 768px) {
+
     .company-info-heading {
         font-size: 20px;
     }
-}
-.table01 {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-}
 
-.table01 tr {
-    border-bottom: solid 1px #ddd;
-}
-
-.table01 th,
-.table01 td {
-    padding: 30px 50px;
-    text-align: left;
-}
-@media screen and (max-width: 768px) {
     .table01 th, .table01 td {
         padding: 10px 5px;
         font-size: 10px;
     }
-}
-.company-info-access {
-    padding-top: 70px;
-}
-@media screen and (max-width: 768px) {
+
     .company-info-access {
         padding-top: 30px;
     }
-}
 
-@media screen and (max-width: 768px) {
     .access-map iframe {
         height: 350px;
     }
-}
 
-.access-map-link {
-    padding-top: 15px;
-}
-@media screen and (max-width: 768px) {
     .access-map-link {
         font-size: 12px;
     }
-}
 
-/* Contact-お問い合わせページ */
-
-
-/* Privacy-policy-個人情報保護方針ページ */
-.privacy-policy-body {
-    padding: 70px 90px;
-}
-@media screen and (max-width: 768px) {
     .privacy-policy-body {
         padding: 40px 0;
     }
-}
 
-.privacy-policy-explain {
-    font-size: 15px;
-    padding-bottom: 50px;
-    line-height: 1.5;
-}
-@media screen and (max-width: 768px) {
     .privacy-policy-explain {
         font-size: 14px;
         padding-bottom: 30px;
     }
-}
 
-.privacy-policy-item {
-    padding-bottom: 30px;
-}
-
-.privacy-policy-item-title {
-    font-size: 30px;
-    font-weight: bold;
-    color: #005EA6;
-    padding-bottom: 15px;
-}
-
-.privacy-policy-item-text {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.privacy-policy-item-text span {
-    padding-left: 30px;
-}
-
-.privacy-policy-item-text .contact-link {
-    text-decoration: underline;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-.privacy-policy-item-text .contact-link:hover {
-    cursor: pointer;
-    opacity: 0.5;
-}
-@media screen and (max-width: 768px) {
     .privacy-policy-item:nth-last-child(1) {
         padding-bottom: 0;
     }
@@ -1043,24 +1073,5 @@ body.appear #container{
     .privacy-policy-item-text {
         font-size: 14px;
     }
-}
 
-@media screen and (max-width: 768px) {
-    .wrapper {
-        padding: 0 15px;
-    }
-
-    .mv-inner {
-        flex-direction: column;
-    }
-
-    .mv-imgArea {
-        max-width: 100%;
-        padding-top: 30px;
-        padding-right: 0;
-    }
-
-    .scrolldown1 {
-        bottom: 15%;
-    }
 }

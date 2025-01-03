@@ -1,14 +1,30 @@
 $(window).on('load',function(){
     $("#splash").delay(1500).fadeOut('slow',function(){//ローディングエリア（splashエリア）を1.5秒でフェードアウトする記述
-    $('body').addClass('appear');//フェードアウト後bodyにappearクラス付与
-    var h = $(window).height();//ブラウザの高さを取得
-    $(".splashbg").css({
-    "border-width":h,//ボーダーの太さにブラウザの高さを代入
-    "animation-name":"backBoxAnime"//animation-nameを定義
-    }); 
+        $('body').addClass('appear');//フェードアウト後bodyにappearクラス付与
+            var h = $(window).height();//ブラウザの高さを取得
+        $(".splashbg").css({
+            "border-width":h,//ボーダーの太さにブラウザの高さを代入
+            "animation-name":"backBoxAnime"//animation-nameを定義
+        }); 
     });
     $("#splash-logo").delay(1200).fadeOut('slow');//ロゴを1.2秒でフェードアウトする記述
+    $('body').removeClass('fadeout');
+});
+
+$(function() {
+    // ハッシュリンク(#)と別ウィンドウでページを開く場合はスルー
+    $('a:not([href^="#"]):not([target])').on('click', function(e){
+      e.preventDefault(); // ナビゲートをキャンセル
+      url = $(this).attr('href'); // 遷移先のURLを取得
+        if (url !== '') {
+            $('body').addClass('fadeout');  // bodyに class="fadeout"を挿入
+            setTimeout(function(){
+            window.location = url;  // 0.8秒後に取得したURLに遷移
+            }, 800);
+        }
+        return false;
     });
+});
 
 $(function () {
     /* pickupスライダー */
@@ -63,3 +79,16 @@ $(function () {
     });
 
 })
+
+// スクロール時に要素がフェードイン
+const fadeInElements = document.querySelectorAll('.product-list-item, .facilities-item');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        }
+    });
+});
+
+fadeInElements.forEach(el => observer.observe(el));
